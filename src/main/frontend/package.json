@@ -6,6 +6,10 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --proxy-config proxy-conf.json",
+    "build": "ng build -prod",
+    "postbuild": "npm run deploy",clear
+    "predeploy": "rimraf ../resources/static/ && mkdirp ../resources/static",
+    "deploy": "copyfiles -f dist/** ../resources/static",
     "test": "ng test",
     "pree2e": "webdriver-manager update --standalone false --gecko false",
     "e2e": "protractor"
@@ -21,7 +25,10 @@
     "@angular/platform-browser-dynamic": "^2.3.1",
     "@angular/router": "^3.3.1",
     "bootstrap": "^3.3.7",
+    "copyfiles": "^1.2.0",
     "core-js": "^2.4.1",
+    "mkdirp": "^0.5.1",
+    "rimraf": "^2.6.1",
     "rxjs": "^5.0.1",
     "ts-helpers": "^1.1.1",
     "zone.js": "^0.7.2"
