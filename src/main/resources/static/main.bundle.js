@@ -1,6 +1,48 @@
 webpackJsonp([1,4],{
 
-/***/ 345:
+/***/ 334:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(316);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__ = __webpack_require__(680);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TaskService; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var TaskService = (function () {
+    function TaskService(http) {
+        this.http = http;
+    }
+    TaskService.prototype.getTasks = function () {
+        return this.http.get('http://localhost:8080/tasks')
+            .map(function (response) {
+            return response.json();
+        });
+    };
+    TaskService = __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(), 
+        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === 'function' && _a) || Object])
+    ], TaskService);
+    return TaskService;
+    var _a;
+}());
+//# sourceMappingURL=/Users/vega/dev/jhipster/tasks/src/main/frontend/src/task.service.js.map
+
+/***/ }),
+
+/***/ 405:
 /***/ (function(module, exports) {
 
 function webpackEmptyContext(req) {
@@ -9,20 +51,20 @@ function webpackEmptyContext(req) {
 webpackEmptyContext.keys = function() { return []; };
 webpackEmptyContext.resolve = webpackEmptyContext;
 module.exports = webpackEmptyContext;
-webpackEmptyContext.id = 345;
+webpackEmptyContext.id = 405;
 
 
 /***/ }),
 
-/***/ 346:
+/***/ 408:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(435);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment__ = __webpack_require__(460);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_module__ = __webpack_require__(456);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(494);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment__ = __webpack_require__(518);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_module__ = __webpack_require__(515);
 
 
 
@@ -35,11 +77,11 @@ __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dyna
 
 /***/ }),
 
-/***/ 455:
+/***/ 514:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -58,8 +100,8 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["U" /* Component */])({
             selector: 'app-root',
-            template: __webpack_require__(618),
-            styles: [__webpack_require__(615)]
+            template: __webpack_require__(676),
+            styles: [__webpack_require__(671)]
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
@@ -69,17 +111,18 @@ var AppComponent = (function () {
 
 /***/ }),
 
-/***/ 456:
+/***/ 515:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(191);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(425);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(431);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__(455);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__tasks_tasks_component__ = __webpack_require__(459);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__tasks_tasks_list_tasks_list_component__ = __webpack_require__(458);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(218);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(485);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(316);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__(514);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__tasks_tasks_component__ = __webpack_require__(517);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__tasks_tasks_list_tasks_list_component__ = __webpack_require__(516);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__tasks_task_service__ = __webpack_require__(334);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -90,6 +133,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -112,7 +156,7 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormsModule */],
                 __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* HttpModule */]
             ],
-            providers: [],
+            providers: [__WEBPACK_IMPORTED_MODULE_7__tasks_task_service__["a" /* TaskService */]],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* AppComponent */]]
         }), 
         __metadata('design:paramtypes', [])
@@ -123,28 +167,12 @@ var AppModule = (function () {
 
 /***/ }),
 
-/***/ 457:
+/***/ 516:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Task; });
-var Task = (function () {
-    function Task(name, completed) {
-        this.name = name;
-        this.completed = completed;
-    }
-    return Task;
-}());
-//# sourceMappingURL=/Users/vega/dev/jhipster/tasks/src/main/frontend/src/task.model.js.map
-
-/***/ }),
-
-/***/ 458:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__task_model__ = __webpack_require__(457);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__task_service__ = __webpack_require__(334);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TasksListComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -158,14 +186,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var TasksListComponent = (function () {
-    function TasksListComponent() {
+    function TasksListComponent(taskService) {
+        var _this = this;
+        this.taskService = taskService;
         this.tasks = [];
-        this.tasks = [
-            new __WEBPACK_IMPORTED_MODULE_1__task_model__["a" /* Task */]('Create A Spring Boot Application', true),
-            new __WEBPACK_IMPORTED_MODULE_1__task_model__["a" /* Task */]('Create Angular Application', true),
-            new __WEBPACK_IMPORTED_MODULE_1__task_model__["a" /* Task */]('Run Application Demo', true),
-            new __WEBPACK_IMPORTED_MODULE_1__task_model__["a" /* Task */]('Make 1 Million Dollars!', false)
-        ];
+        // fetch our tasks from our Spring Boot Application
+        taskService.getTasks()
+            .subscribe(function (tasks) { return _this.tasks = tasks; }, function (error) { return console.log(error); }, function () { return console.log('Task Service completed.'); });
     }
     TasksListComponent.prototype.ngOnInit = function () {
     };
@@ -177,22 +204,23 @@ var TasksListComponent = (function () {
     TasksListComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["U" /* Component */])({
             selector: 'app-tasks-list',
-            template: __webpack_require__(619),
-            styles: [__webpack_require__(616)]
+            template: __webpack_require__(677),
+            styles: [__webpack_require__(672)]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__task_service__["a" /* TaskService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__task_service__["a" /* TaskService */]) === 'function' && _a) || Object])
     ], TasksListComponent);
     return TasksListComponent;
+    var _a;
 }());
 //# sourceMappingURL=/Users/vega/dev/jhipster/tasks/src/main/frontend/src/tasks-list.component.js.map
 
 /***/ }),
 
-/***/ 459:
+/***/ 517:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TasksComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -208,13 +236,12 @@ var TasksComponent = (function () {
     function TasksComponent() {
     }
     TasksComponent.prototype.ngOnInit = function () {
-        console.log('ngOnInit called...');
     };
     TasksComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["U" /* Component */])({
             selector: 'app-tasks',
-            template: __webpack_require__(620),
-            styles: [__webpack_require__(617)]
+            template: __webpack_require__(678),
+            styles: [__webpack_require__(673)]
         }), 
         __metadata('design:paramtypes', [])
     ], TasksComponent);
@@ -224,7 +251,7 @@ var TasksComponent = (function () {
 
 /***/ }),
 
-/***/ 460:
+/***/ 518:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -240,55 +267,88 @@ var environment = {
 
 /***/ }),
 
-/***/ 615:
-/***/ (function(module, exports) {
+/***/ 671:
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "h1 {\n    color: seagreen;\n}"
+exports = module.exports = __webpack_require__(88)();
+// imports
 
-/***/ }),
 
-/***/ 616:
-/***/ (function(module, exports) {
+// module
+exports.push([module.i, "h1 {\n    color: seagreen;\n}", ""]);
 
-module.exports = ""
+// exports
 
-/***/ }),
 
-/***/ 617:
-/***/ (function(module, exports) {
-
-module.exports = "h2 {\n    color: royalblue;\n}"
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ 618:
+/***/ 672:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(88)();
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ 673:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(88)();
+// imports
+
+
+// module
+exports.push([module.i, "h2 {\n    color: royalblue;\n}", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ 676:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"container\">\n    <div class=\"row\">\n        <div class=\"col-md-12\">\n            <h1>{{ title }}</h1>\n            <hr/>\n            <app-tasks></app-tasks>\n        </div>\n    </div>\n</div>"
 
 /***/ }),
 
-/***/ 619:
+/***/ 677:
 /***/ (function(module, exports) {
 
 module.exports = "<ul class=\"list-group\">\n  <li *ngFor=\"let task of tasks\" class=\"{{getTaskClass(task)}}\" >{{ task.name }}</li>\n</ul>"
 
 /***/ }),
 
-/***/ 620:
+/***/ 678:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"row\">\n  <div class=\"col-md-12\">\n      <h2>Tasks</h2>\n      <app-tasks-list></app-tasks-list>\n  </div>\n</div>"
 
 /***/ }),
 
-/***/ 636:
+/***/ 957:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(346);
+module.exports = __webpack_require__(408);
 
 
 /***/ })
 
-},[636]);
-//# sourceMappingURL=main.bundle.map
+},[957]);
+//# sourceMappingURL=main.bundle.js.map

@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { TasksComponent } from './tasks/tasks.component';
 import { TasksListComponent } from './tasks/tasks-list/tasks-list.component';
+import {TaskService} from "./tasks/task.service";
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { TasksListComponent } from './tasks/tasks-list/tasks-list.component';
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [TaskService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

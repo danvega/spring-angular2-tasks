@@ -17,9 +17,10 @@ public class TasksApplication {
 	@Bean
 	CommandLineRunner runner(TaskService taskService){
 		return args -> {
-			taskService.save( new Task(1L,"Create Spring Boot Application",false));
-			taskService.save( new Task(2L,"Create Angular 2 Application",false));
-			taskService.save( new Task(3L,"Run the demo application",false));
+			taskService.save( new Task(1L,"Create Spring Boot Application",true));
+			taskService.save( new Task(2L,"Create Angular 2 Application",true));
+			taskService.save( new Task(3L,"Run the demo application",true));
+			taskService.save( new Task(4L, "Make 1 Million Dollars", false));
 		};
 	}
 }

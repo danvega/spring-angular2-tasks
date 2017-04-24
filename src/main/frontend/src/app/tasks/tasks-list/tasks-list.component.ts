@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Task} from "../task.model";
+import {Http} from "@angular/http";
+import {TaskService} from "../task.service";
+import {Response} from "_debugger";
 
 @Component({
   selector: 'app-tasks-list',
@@ -8,13 +11,14 @@ import {Task} from "../task.model";
 })
 export class TasksListComponent implements OnInit {
   tasks: Task[] = [];
-  constructor() {
-    this.tasks = [
-        new Task('Create A Spring Boot Application', true),
-        new Task('Create Angular Application', true),
-        new Task('Run Application Demo', true),
-        new Task('Make 1 Million Dollars!', false)
-    ];
+  constructor(private taskService: TaskService) {
+    // fetch our tasks from our Spring Boot Application
+    taskService.getTasks()
+        .subscribe(
+            (tasks: any[]) => this.tasks = tasks,
+            (error) => console.log(error),
+            () => console.log('Task Service completed.')
+        );
   }
 
   ngOnInit() {
