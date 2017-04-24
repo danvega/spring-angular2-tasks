@@ -7,7 +7,7 @@ export class TaskService {
     constructor(private http: Http) {
     }
     getTasks(){
-        return this.http.get('http://localhost:8080/tasks')
+        return this.http.get('/api/tasks')
             .map(
                 (response: Response) => {
                     return response.json();
