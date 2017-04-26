@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Task} from "../task.model";
-import {Http} from "@angular/http";
 import {TaskService} from "../task.service";
-import {Response} from "_debugger";
 
 @Component({
   selector: 'app-tasks-list',
