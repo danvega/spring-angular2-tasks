@@ -7,12 +7,18 @@ import { AppComponent } from './app.component';
 import { TasksComponent } from './tasks/tasks.component';
 import { TasksListComponent } from './tasks/tasks-list/tasks-list.component';
 import {TaskService} from "./tasks/task.service";
+import { NavigationComponent } from './navigation/navigation.component';
+import { DocsComponent } from './docs/docs.component';
+import { TasksAddComponent } from './tasks/tasks-add/tasks-add.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TasksComponent,
-    TasksListComponent
+    TasksListComponent,
+    NavigationComponent,
+    DocsComponent,
+    TasksAddComponent
   ],
   imports: [
     BrowserModule,

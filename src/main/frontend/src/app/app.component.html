@@ -1,9 +1,16 @@
 <div class="container">
+    <app-navigation></app-navigation>
     <div class="row">
-        <div class="col-md-12">
-            <h1>{{ title }}</h1>
-            <hr/>
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col-md-12">
+                    <app-tasks-add></app-tasks-add>
+                </div>
+            </div>
             <app-tasks></app-tasks>
+        </div>
+        <div class="col-md-4">
+            <app-docs></app-docs>
         </div>
     </div>
 </div>

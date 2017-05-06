@@ -1,0 +1,8 @@
+.name {
+    padding-left: 10px;
+    font-size: 15px;
+}
+.completed {
+    text-decoration: line-through !important;
+    font-style: italic;
+}

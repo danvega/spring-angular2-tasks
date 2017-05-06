@@ -2,11 +2,9 @@ package com.therealdanvega.service;
 
 import com.therealdanvega.domain.Task;
 
-import java.util.List;
-
 public interface TaskService {
 
-    public Iterable<Task> list();
+    Iterable<Task> list();
 
-    public void save(Task task);
+    Task save(Task task);
 }

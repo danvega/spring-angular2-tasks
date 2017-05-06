@@ -4,8 +4,6 @@ import com.therealdanvega.domain.Task;
 import com.therealdanvega.repository.TaskRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class TaskServiceImpl implements TaskService {
 
@@ -21,7 +19,7 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public void save(Task task) {
-        taskRepository.save(task);
+    public Task save(Task task) {
+        return taskRepository.save(task);
     }
 }
