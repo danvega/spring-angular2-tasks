@@ -11,23 +11,23 @@ import {TaskService} from "../task.service";
 })
 export class TasksListComponent implements OnInit {
 
-  tasks: Task[] = [];
+    tasks: Task[] = [];
 
-  constructor(private taskService: TaskService) {
-  }
+    constructor(private taskService: TaskService) {
+    }
 
-  ngOnInit() {
+    ngOnInit() {
       // fetch our tasks from our Spring Boot Application
       this.taskService.getTasks()
           .subscribe(
               (tasks: any[]) => this.tasks = tasks,
               (error) => console.log(error)
           );
-  }
+    }
 
-  getDueDateLabel(task: Task){
+    getDueDateLabel(task: Task){
       return task.completed ? 'label-success' : 'label-primary';
-  }
+    }
 
     onTaskChange(event, task) {
         this.taskService.saveTask(task,event.target.checked)
@@ -38,7 +38,8 @@ export class TasksListComponent implements OnInit {
             );
     }
 
-    onTaskAdded(task: Task) {
+    onTaskCreated(task: Task) {
+        console.log("tasks-list.component.ts onTaskAdded()");
         this.tasks.push(task);
     }
 }

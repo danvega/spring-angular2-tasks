@@ -1,5 +1,10 @@
 <div class="row">
     <div class="col-md-12">
-        <app-tasks-list (taskCreated)="onTaskAdded($event)"></app-tasks-list>
+        <app-tasks-add></app-tasks-add>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <app-tasks-list (taskCreated)="onTaskCreated($event)"></app-tasks-list>
     </div>
 </div>
