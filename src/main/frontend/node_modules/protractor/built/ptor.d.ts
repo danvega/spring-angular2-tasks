@@ -1,4 +1,3 @@
-/// <reference types="selenium-webdriver" />
 import * as webdriver from 'selenium-webdriver';
 import * as chrome from 'selenium-webdriver/chrome';
 import * as firefox from 'selenium-webdriver/firefox';

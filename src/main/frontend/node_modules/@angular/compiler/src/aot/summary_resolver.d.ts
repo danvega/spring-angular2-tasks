@@ -11,20 +11,29 @@ export interface AotSummaryResolverHost {
     /**
      * Loads an NgModule/Directive/Pipe summary file
      */
-    loadSummary(filePath: string): string;
+    loadSummary(filePath: string): string | null;
     /**
      * Returns whether a file is a source file or not.
      */
     isSourceFile(sourceFilePath: string): boolean;
+    /**
+     * Returns the output file path of a source file.
+     * E.g.
+     * `some_file.ts` -> `some_file.d.ts`
+     */
+    getOutputFileName(sourceFilePath: string): string;
 }
 export declare class AotSummaryResolver implements SummaryResolver<StaticSymbol> {
     private host;
     private staticSymbolCache;
     private summaryCache;
     private loadedFilePaths;
+    private importAs;
     constructor(host: AotSummaryResolverHost, staticSymbolCache: StaticSymbolCache);
-    private _assertNoMembers(symbol);
+    isLibraryFile(filePath: string): boolean;
+    getLibraryFileName(filePath: string): string;
     resolveSummary(staticSymbol: StaticSymbol): Summary<StaticSymbol>;
     getSymbolsOf(filePath: string): StaticSymbol[];
+    getImportAs(staticSymbol: StaticSymbol): StaticSymbol;
     private _loadSummaryFile(filePath);
 }

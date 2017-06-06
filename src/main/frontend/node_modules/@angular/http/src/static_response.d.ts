@@ -58,7 +58,7 @@ export declare class Response extends Body {
      *
      * Defaults to "OK"
      */
-    statusText: string;
+    statusText: string | null;
     /**
      * Non-standard property
      *
@@ -76,7 +76,7 @@ export declare class Response extends Body {
      * Headers object based on the `Headers` class in the [Fetch
      * Spec](https://fetch.spec.whatwg.org/#headers-class).
      */
-    headers: Headers;
+    headers: Headers | null;
     constructor(responseOptions: ResponseOptions);
     toString(): string;
 }
