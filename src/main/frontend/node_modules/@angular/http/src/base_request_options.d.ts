@@ -60,7 +60,7 @@ export declare class RequestOptions {
      */
     withCredentials: boolean | null;
     responseType: ResponseContentType | null;
-    constructor({method, headers, body, url, search, params, withCredentials, responseType}?: RequestOptionsArgs);
+    constructor(opts?: RequestOptionsArgs);
     /**
      * Creates a copy of the `RequestOptions` instance, using the optional input as values to override
      * existing values. This method will not change the values of the instance on which it is being

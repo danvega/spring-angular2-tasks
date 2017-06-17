@@ -56,7 +56,7 @@ export function groupBy<T, K, R>(this: Observable<T>, keySelector: (value: T) =>
  *                    {id: 3, name: 'qfs1'},
  *                    {id: 2, name: 'qsgqsfg2'}
  *                   )
- *     .groupBy(p => p.id, p => p.anme)
+ *     .groupBy(p => p.id, p => p.name)
  *     .flatMap( (group$) => group$.reduce((acc, cur) => [...acc, cur], ["" + group$.key]))
  *     .map(arr => ({'id': parseInt(arr[0]), 'values': arr.slice(1)}))
  *     .subscribe(p => console.log(p));
@@ -227,27 +227,19 @@ class GroupDurationSubscriber<K, T> extends Subscriber<T> {
   constructor(private key: K,
               private group: Subject<T>,
               private parent: GroupBySubscriber<any, K, T>) {
-    super();
+    super(group);
   }
 
   protected _next(value: T): void {
-    this._complete();
+    this.complete();
   }
 
-  protected _error(err: any): void {
-    const group = this.group;
-    if (!group.closed) {
-      group.error(err);
+  protected _unsubscribe() {
+    const { parent, key } = this;
+    this.key = this.parent = null;
+    if (parent) {
+      parent.removeGroup(key);
     }
-    this.parent.removeGroup(this.key);
-  }
-
-  protected _complete(): void {
-    const group = this.group;
-    if (!group.closed) {
-      group.complete();
-    }
-    this.parent.removeGroup(this.key);
   }
 }
 

@@ -1,11 +1,11 @@
 0 info it worked if it ends with ok
-1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'start' ]
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'run', 'start' ]
 2 info using npm@4.0.5
 3 info using node@v7.4.0
 4 verbose stack Error: ENOENT: no such file or directory, open '/Users/vega/dev/jhipster/tasks/package.json'
 5 verbose cwd /Users/vega/dev/jhipster/tasks
 6 error Darwin 16.6.0
-7 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "start"
+7 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "run" "start"
 8 error node v7.4.0
 9 error npm  v4.0.5
 10 error path /Users/vega/dev/jhipster/tasks/package.json

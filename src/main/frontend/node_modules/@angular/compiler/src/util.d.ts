@@ -1,10 +1,4 @@
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
+import * as o from './output/output_ast';
 export declare const MODULE_SUFFIX = "";
 export declare function camelCaseToDashCase(input: string): string;
 export declare function dashCaseToCamelCase(input: string): string;
@@ -29,12 +23,18 @@ export declare class ValueTransformer implements ValueVisitor {
     visitPrimitive(value: any, context: any): any;
     visitOther(value: any, context: any): any;
 }
-export declare class SyncAsyncResult<T> {
-    syncResult: T | null;
-    asyncResult: Promise<T> | null;
-    constructor(syncResult: T | null, asyncResult?: Promise<T> | null);
-}
+export declare type SyncAsync<T> = T | Promise<T>;
+export declare const SyncAsync: {
+    assertSync: <T>(value: SyncAsync<T>) => T;
+    then: <T, R>(value: SyncAsync<T>, cb: (value: T) => SyncAsync<R>) => SyncAsync<R>;
+    all: <T>(syncAsyncValues: SyncAsync<T>[]) => SyncAsync<T[]>;
+};
 export declare function syntaxError(msg: string): Error;
 export declare function isSyntaxError(error: Error): boolean;
 export declare function escapeRegExp(s: string): string;
 export declare function utf8Encode(str: string): string;
+export interface OutputContext {
+    genFilePath: string;
+    statements: o.Statement[];
+    importExpr(reference: any, typeParams?: o.Type[] | null): o.Expression;
+}

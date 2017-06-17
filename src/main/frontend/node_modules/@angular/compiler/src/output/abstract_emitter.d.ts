@@ -11,21 +11,21 @@ import { SourceMapGenerator } from './source_map';
 export declare const CATCH_ERROR_VAR: o.ReadVarExpr;
 export declare const CATCH_STACK_VAR: o.ReadVarExpr;
 export declare abstract class OutputEmitter {
-    abstract emitStatements(srcFilePath: string, genFilePath: string, stmts: o.Statement[], exportedVars: string[], preamble?: string | null): string;
+    abstract emitStatements(srcFilePath: string, genFilePath: string, stmts: o.Statement[], preamble?: string | null): string;
 }
 export declare class EmitterVisitorContext {
-    private _exportedVars;
     private _indent;
-    static createRoot(exportedVars: string[]): EmitterVisitorContext;
+    static createRoot(): EmitterVisitorContext;
     private _lines;
     private _classes;
-    constructor(_exportedVars: string[], _indent: number);
+    private _preambleLineCount;
+    constructor(_indent: number);
     private readonly _currentLine;
-    isExportedVar(varName: string): boolean;
     println(from?: {
         sourceSpan: ParseSourceSpan | null;
     } | null, lastPart?: string): void;
     lineIsEmpty(): boolean;
+    lineLength(): number;
     print(from: {
         sourceSpan: ParseSourceSpan | null;
     } | null, part: string, newLine?: boolean): void;
@@ -37,6 +37,8 @@ export declare class EmitterVisitorContext {
     readonly currentClass: o.ClassStmt | null;
     toSource(): string;
     toSourceMapGenerator(sourceFilePath: string, genFilePath: string, startsAtLine?: number): SourceMapGenerator;
+    setPreambleLineCount(count: number): number;
+    spanOf(line: number, column: number): ParseSourceSpan | null;
     private readonly sourceLines;
 }
 export declare abstract class AbstractEmitterVisitor implements o.StatementVisitor, o.ExpressionVisitor {
@@ -63,6 +65,7 @@ export declare abstract class AbstractEmitterVisitor implements o.StatementVisit
     abstract visitExternalExpr(ast: o.ExternalExpr, ctx: EmitterVisitorContext): any;
     visitConditionalExpr(ast: o.ConditionalExpr, ctx: EmitterVisitorContext): any;
     visitNotExpr(ast: o.NotExpr, ctx: EmitterVisitorContext): any;
+    visitAssertNotNullExpr(ast: o.AssertNotNull, ctx: EmitterVisitorContext): any;
     abstract visitFunctionExpr(ast: o.FunctionExpr, ctx: EmitterVisitorContext): any;
     abstract visitDeclareFunctionStmt(stmt: o.DeclareFunctionStmt, context: any): any;
     visitBinaryOperatorExpr(ast: o.BinaryOperatorExpr, ctx: EmitterVisitorContext): any;
@@ -71,8 +74,8 @@ export declare abstract class AbstractEmitterVisitor implements o.StatementVisit
     visitLiteralArrayExpr(ast: o.LiteralArrayExpr, ctx: EmitterVisitorContext): any;
     visitLiteralMapExpr(ast: o.LiteralMapExpr, ctx: EmitterVisitorContext): any;
     visitCommaExpr(ast: o.CommaExpr, ctx: EmitterVisitorContext): any;
-    visitAllExpressions(expressions: o.Expression[], ctx: EmitterVisitorContext, separator: string, newLine?: boolean): void;
-    visitAllObjects<T>(handler: (t: T) => void, expressions: T[], ctx: EmitterVisitorContext, separator: string, newLine?: boolean): void;
+    visitAllExpressions(expressions: o.Expression[], ctx: EmitterVisitorContext, separator: string): void;
+    visitAllObjects<T>(handler: (t: T) => void, expressions: T[], ctx: EmitterVisitorContext, separator: string): void;
     visitAllStatements(statements: o.Statement[], ctx: EmitterVisitorContext): void;
 }
 export declare function escapeIdentifier(input: string, escapeDollar: boolean, alwaysQuote?: boolean): any;

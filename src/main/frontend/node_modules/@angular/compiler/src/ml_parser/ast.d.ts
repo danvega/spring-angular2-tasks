@@ -5,6 +5,7 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
+import { AstPath } from '../ast_path';
 import { ParseSourceSpan } from '../parse_util';
 export interface Node {
     sourceSpan: ParseSourceSpan;
@@ -68,3 +69,15 @@ export interface Visitor {
     visitExpansionCase(expansionCase: ExpansionCase, context: any): any;
 }
 export declare function visitAll(visitor: Visitor, nodes: Node[], context?: any): any[];
+export declare class RecursiveVisitor implements Visitor {
+    constructor();
+    visitElement(ast: Element, context: any): any;
+    visitAttribute(ast: Attribute, context: any): any;
+    visitText(ast: Text, context: any): any;
+    visitComment(ast: Comment, context: any): any;
+    visitExpansion(ast: Expansion, context: any): any;
+    visitExpansionCase(ast: ExpansionCase, context: any): any;
+    private visitChildren<T>(context, cb);
+}
+export declare type HtmlAstPath = AstPath<Node>;
+export declare function findNode(nodes: Node[], position: number): HtmlAstPath;

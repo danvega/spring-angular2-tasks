@@ -60,6 +60,38 @@ export declare class RequiredValidator implements Validator {
     validate(c: AbstractControl): ValidationErrors | null;
     registerOnValidatorChange(fn: () => void): void;
 }
+export declare const MIN_VALIDATOR: Provider;
+/**
+ * A directive which installs the {@link MinValidator} for any `formControlName`,
+ * `formControl`, or control with `ngModel` that also has a `min` attribute.
+ *
+ * @experimental
+ */
+export declare class MinValidator implements Validator, OnChanges {
+    private _validator;
+    private _onChange;
+    min: string;
+    ngOnChanges(changes: SimpleChanges): void;
+    validate(c: AbstractControl): ValidationErrors | null;
+    registerOnValidatorChange(fn: () => void): void;
+    private _createValidator();
+}
+export declare const MAX_VALIDATOR: Provider;
+/**
+ * A directive which installs the {@link MaxValidator} for any `formControlName`,
+ * `formControl`, or control with `ngModel` that also has a `min` attribute.
+ *
+ * @experimental
+ */
+export declare class MaxValidator implements Validator, OnChanges {
+    private _validator;
+    private _onChange;
+    max: string;
+    ngOnChanges(changes: SimpleChanges): void;
+    validate(c: AbstractControl): ValidationErrors | null;
+    registerOnValidatorChange(fn: () => void): void;
+    private _createValidator();
+}
 /**
  * A Directive that adds the `required` validator to checkbox controls marked with the
  * `required` attribute, via the {@link NG_VALIDATORS} binding.

@@ -1,11 +1,5 @@
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-import { ɵReflectorReader } from '@angular/core';
+import { CompileReflector } from '../compile_reflector';
+import * as o from '../output/output_ast';
 import { SummaryResolver } from '../summary_resolver';
 import { StaticSymbol } from './static_symbol';
 import { StaticSymbolResolver } from './static_symbol_resolver';
@@ -13,7 +7,7 @@ import { StaticSymbolResolver } from './static_symbol_resolver';
  * A static reflector implements enough of the Reflector API that is necessary to compile
  * templates statically.
  */
-export declare class StaticReflector implements ɵReflectorReader {
+export declare class StaticReflector implements CompileReflector {
     private summaryResolver;
     private symbolResolver;
     private errorRecorder;
@@ -35,12 +29,10 @@ export declare class StaticReflector implements ɵReflectorReader {
         filePath: string;
         fn: any;
     }[], errorRecorder?: (error: any, fileName?: string) => void);
-    importUri(typeOrFunc: StaticSymbol): string | null;
-    resourceUri(typeOrFunc: StaticSymbol): string;
-    resolveIdentifier(name: string, moduleUrl: string, members: string[]): StaticSymbol;
+    componentModuleUrl(typeOrFunc: StaticSymbol): string;
+    resolveExternalReference(ref: o.ExternalReference): StaticSymbol;
     findDeclaration(moduleUrl: string, name: string, containingFile?: string): StaticSymbol;
     findSymbolDeclaration(symbol: StaticSymbol): StaticSymbol;
-    resolveEnum(enumIdentifier: any, name: string): any;
     annotations(type: StaticSymbol): any[];
     propMetadata(type: StaticSymbol): {
         [key: string]: any[];

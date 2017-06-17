@@ -16,11 +16,13 @@ import { TemplateParser } from '../template_parser/template_parser';
 import { ViewCompiler } from '../view_compiler/view_compiler';
 import { AotCompilerHost } from './compiler_host';
 import { GeneratedFile } from './generated_file';
+import { StaticReflector } from './static_reflector';
 import { StaticSymbol } from './static_symbol';
 import { StaticSymbolResolver } from './static_symbol_resolver';
 export declare class AotCompiler {
     private _config;
     private _host;
+    private _reflector;
     private _metadataResolver;
     private _templateParser;
     private _styleCompiler;
@@ -30,18 +32,23 @@ export declare class AotCompiler {
     private _summaryResolver;
     private _localeId;
     private _translationFormat;
-    private _genFilePreamble;
+    private _enableSummariesForJit;
     private _symbolResolver;
-    constructor(_config: CompilerConfig, _host: AotCompilerHost, _metadataResolver: CompileMetadataResolver, _templateParser: TemplateParser, _styleCompiler: StyleCompiler, _viewCompiler: ViewCompiler, _ngModuleCompiler: NgModuleCompiler, _outputEmitter: OutputEmitter, _summaryResolver: SummaryResolver<StaticSymbol>, _localeId: string | null, _translationFormat: string | null, _genFilePreamble: string | null, _symbolResolver: StaticSymbolResolver);
+    constructor(_config: CompilerConfig, _host: AotCompilerHost, _reflector: StaticReflector, _metadataResolver: CompileMetadataResolver, _templateParser: TemplateParser, _styleCompiler: StyleCompiler, _viewCompiler: ViewCompiler, _ngModuleCompiler: NgModuleCompiler, _outputEmitter: OutputEmitter, _summaryResolver: SummaryResolver<StaticSymbol>, _localeId: string | null, _translationFormat: string | null, _enableSummariesForJit: boolean | null, _symbolResolver: StaticSymbolResolver);
     clearCache(): void;
-    compileAll(rootFiles: string[]): Promise<GeneratedFile[]>;
-    private _compileSrcFile(srcFileUrl, ngModuleByPipeOrDirective, directives, pipes, ngModules, injectables);
-    private _createSummary(srcFileUrl, directives, pipes, ngModules, injectables, targetStatements, targetExportedVars);
-    private _compileModule(ngModuleType, targetStatements);
-    private _compileComponentFactory(compMeta, ngModule, fileSuffix, targetStatements);
-    private _compileComponent(compMeta, ngModule, directiveIdentifiers, componentStyles, fileSuffix, targetStatements);
-    private _codgenStyles(fileUrl, stylesCompileResult, fileSuffix);
-    private _codegenSourceModule(srcFileUrl, genFileUrl, statements, exportedVars);
+    analyzeModulesSync(rootFiles: string[]): NgAnalyzedModules;
+    analyzeModulesAsync(rootFiles: string[]): Promise<NgAnalyzedModules>;
+    emitAllStubs(analyzeResult: NgAnalyzedModules): GeneratedFile[];
+    emitAllImpls(analyzeResult: NgAnalyzedModules): GeneratedFile[];
+    private _compileStubFile(srcFileUrl, directives, ngModules);
+    private _compileImplFile(srcFileUrl, ngModuleByPipeOrDirective, directives, pipes, ngModules, injectables);
+    private _createSummary(srcFileUrl, directives, pipes, ngModules, injectables, ngFactoryCtx);
+    private _compileModule(outputCtx, ngModuleType);
+    private _compileComponentFactory(outputCtx, compMeta, ngModule, fileSuffix);
+    private _compileComponent(outputCtx, compMeta, ngModule, directiveIdentifiers, componentStyles, fileSuffix);
+    private _createOutputContext(genFilePath);
+    private _codegenStyles(srcFileUrl, compMeta, stylesheetMetadata, fileSuffix);
+    private _codegenSourceModule(srcFileUrl, ctx);
 }
 export interface NgAnalyzedModules {
     ngModules: CompileNgModuleMetadata[];

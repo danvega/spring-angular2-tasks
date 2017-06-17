@@ -24,4 +24,6 @@ export declare class DomRendererFactory2 implements RendererFactory2 {
     private defaultRenderer;
     constructor(eventManager: EventManager, sharedStylesHost: DomSharedStylesHost);
     createRenderer(element: any, type: RendererType2 | null): Renderer2;
+    begin(): void;
+    end(): void;
 }

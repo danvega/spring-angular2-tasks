@@ -9,6 +9,7 @@ export interface NgTools_InternalApi_NG2_CodeGen_Options {
     i18nFormat?: string;
     i18nFile?: string;
     locale?: string;
+    missingTranslation?: string;
     readResource: (fileName: string) => Promise<string>;
 }
 export interface NgTools_InternalApi_NG2_ListLazyRoutes_Options {
@@ -40,7 +41,7 @@ export declare class NgTools_InternalApi_NG_2 {
      * @internal
      * @private
      */
-    static codeGen(options: NgTools_InternalApi_NG2_CodeGen_Options): Promise<void>;
+    static codeGen(options: NgTools_InternalApi_NG2_CodeGen_Options): Promise<any>;
     /**
      * @internal
      * @private
@@ -50,5 +51,5 @@ export declare class NgTools_InternalApi_NG_2 {
      * @internal
      * @private
      */
-    static extractI18n(options: NgTools_InternalApi_NG2_ExtractI18n_Options): Promise<void>;
+    static extractI18n(options: NgTools_InternalApi_NG2_ExtractI18n_Options): Promise<any>;
 }

@@ -7,19 +7,6 @@
  */
 import { SimpleChange } from '../change_detection/change_detection_util';
 /**
- * @stable
- */
-export declare enum LifecycleHooks {
-    OnInit = 0,
-    OnDestroy = 1,
-    DoCheck = 2,
-    OnChanges = 3,
-    AfterContentInit = 4,
-    AfterContentChecked = 5,
-    AfterViewInit = 6,
-    AfterViewChecked = 7,
-}
-/**
  * A `changes` object whose keys are property names and
  * values are instances of {@link SimpleChange}. See {@link OnChanges}
  * @stable
@@ -27,7 +14,6 @@ export declare enum LifecycleHooks {
 export interface SimpleChanges {
     [propName: string]: SimpleChange;
 }
-export declare const LIFECYCLE_HOOKS_VALUES: LifecycleHooks[];
 /**
  * @whatItDoes Lifecycle hook that is called when any data-bound property of a directive changes.
  * @howToUse

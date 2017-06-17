@@ -5,7 +5,6 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import { CompileIdentifierMetadata } from '../compile_metadata';
 import { ParseSourceSpan } from '../parse_util';
 export declare enum TypeModifier {
     Const = 0,
@@ -170,10 +169,16 @@ export declare class LiteralExpr extends Expression {
     visitExpression(visitor: ExpressionVisitor, context: any): any;
 }
 export declare class ExternalExpr extends Expression {
-    value: CompileIdentifierMetadata;
+    value: ExternalReference;
     typeParams: Type[] | null;
-    constructor(value: CompileIdentifierMetadata, type?: Type | null, typeParams?: Type[] | null, sourceSpan?: ParseSourceSpan | null);
+    constructor(value: ExternalReference, type?: Type | null, typeParams?: Type[] | null, sourceSpan?: ParseSourceSpan | null);
     visitExpression(visitor: ExpressionVisitor, context: any): any;
+}
+export declare class ExternalReference {
+    moduleName: string | null;
+    name: string | null;
+    runtime: any | null;
+    constructor(moduleName: string | null, name: string | null, runtime: any | null);
 }
 export declare class ConditionalExpr extends Expression {
     condition: Expression;
@@ -183,6 +188,11 @@ export declare class ConditionalExpr extends Expression {
     visitExpression(visitor: ExpressionVisitor, context: any): any;
 }
 export declare class NotExpr extends Expression {
+    condition: Expression;
+    constructor(condition: Expression, sourceSpan?: ParseSourceSpan | null);
+    visitExpression(visitor: ExpressionVisitor, context: any): any;
+}
+export declare class AssertNotNull extends Expression {
     condition: Expression;
     constructor(condition: Expression, sourceSpan?: ParseSourceSpan | null);
     visitExpression(visitor: ExpressionVisitor, context: any): any;
@@ -259,6 +269,7 @@ export interface ExpressionVisitor {
     visitExternalExpr(ast: ExternalExpr, context: any): any;
     visitConditionalExpr(ast: ConditionalExpr, context: any): any;
     visitNotExpr(ast: NotExpr, context: any): any;
+    visitAssertNotNullExpr(ast: AssertNotNull, context: any): any;
     visitCastExpr(ast: CastExpr, context: any): any;
     visitFunctionExpr(ast: FunctionExpr, context: any): any;
     visitBinaryOperatorExpr(ast: BinaryOperatorExpr, context: any): any;
@@ -277,6 +288,7 @@ export declare const TYPED_NULL_EXPR: LiteralExpr;
 export declare enum StmtModifier {
     Final = 0,
     Private = 1,
+    Exported = 2,
 }
 export declare abstract class Statement {
     modifiers: StmtModifier[];
@@ -389,6 +401,7 @@ export declare class AstTransformer implements StatementVisitor, ExpressionVisit
     visitExternalExpr(ast: ExternalExpr, context: any): any;
     visitConditionalExpr(ast: ConditionalExpr, context: any): any;
     visitNotExpr(ast: NotExpr, context: any): any;
+    visitAssertNotNullExpr(ast: AssertNotNull, context: any): any;
     visitCastExpr(ast: CastExpr, context: any): any;
     visitFunctionExpr(ast: FunctionExpr, context: any): any;
     visitBinaryOperatorExpr(ast: BinaryOperatorExpr, context: any): any;
@@ -421,6 +434,7 @@ export declare class RecursiveAstVisitor implements StatementVisitor, Expression
     visitExternalExpr(ast: ExternalExpr, context: any): any;
     visitConditionalExpr(ast: ConditionalExpr, context: any): any;
     visitNotExpr(ast: NotExpr, context: any): any;
+    visitAssertNotNullExpr(ast: AssertNotNull, context: any): any;
     visitCastExpr(ast: CastExpr, context: any): any;
     visitFunctionExpr(ast: FunctionExpr, context: any): any;
     visitBinaryOperatorExpr(ast: BinaryOperatorExpr, context: any): any;
@@ -445,11 +459,12 @@ export declare function findReadVarNames(stmts: Statement[]): Set<string>;
 export declare function applySourceSpanToStatementIfNeeded(stmt: Statement, sourceSpan: ParseSourceSpan | null): Statement;
 export declare function applySourceSpanToExpressionIfNeeded(expr: Expression, sourceSpan: ParseSourceSpan | null): Expression;
 export declare function variable(name: string, type?: Type | null, sourceSpan?: ParseSourceSpan | null): ReadVarExpr;
-export declare function importExpr(id: CompileIdentifierMetadata, typeParams?: Type[] | null, sourceSpan?: ParseSourceSpan | null): ExternalExpr;
-export declare function importType(id: CompileIdentifierMetadata, typeParams?: Type[] | null, typeModifiers?: TypeModifier[] | null): ExpressionType | null;
+export declare function importExpr(id: ExternalReference, typeParams?: Type[] | null, sourceSpan?: ParseSourceSpan | null): ExternalExpr;
+export declare function importType(id: ExternalReference, typeParams?: Type[] | null, typeModifiers?: TypeModifier[] | null): ExpressionType | null;
 export declare function expressionType(expr: Expression, typeModifiers?: TypeModifier[] | null): ExpressionType | null;
 export declare function literalArr(values: Expression[], type?: Type | null, sourceSpan?: ParseSourceSpan | null): LiteralArrayExpr;
 export declare function literalMap(values: [string, Expression][], type?: MapType | null, quoted?: boolean): LiteralMapExpr;
 export declare function not(expr: Expression, sourceSpan?: ParseSourceSpan | null): NotExpr;
+export declare function assertNotNull(expr: Expression, sourceSpan?: ParseSourceSpan | null): AssertNotNull;
 export declare function fn(params: FnParam[], body: Statement[], type?: Type | null, sourceSpan?: ParseSourceSpan | null): FunctionExpr;
 export declare function literal(value: any, type?: Type | null, sourceSpan?: ParseSourceSpan | null): LiteralExpr;

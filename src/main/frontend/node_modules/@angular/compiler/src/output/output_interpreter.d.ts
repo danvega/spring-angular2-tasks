@@ -6,4 +6,6 @@
  * found in the LICENSE file at https://angular.io/license
  */
 import * as o from './output_ast';
-export declare function interpretStatements(statements: o.Statement[], resultVars: string[]): any[];
+export declare function interpretStatements(statements: o.Statement[]): {
+    [key: string]: any;
+};

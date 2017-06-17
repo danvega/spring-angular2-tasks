@@ -44,6 +44,14 @@ export declare const NG_ASYNC_VALIDATORS: InjectionToken<(Function | Validator)[
  */
 export declare class Validators {
     /**
+     * Validator that requires controls to have a value greater than a number.
+     */
+    static min(min: number): ValidatorFn;
+    /**
+     * Validator that requires controls to have a value less than a number.
+     */
+    static max(max: number): ValidatorFn;
+    /**
      * Validator that requires controls to have a non-empty value.
      */
     static required(control: AbstractControl): ValidationErrors | null;

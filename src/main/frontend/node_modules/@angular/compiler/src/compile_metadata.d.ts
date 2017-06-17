@@ -5,8 +5,9 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import { ChangeDetectionStrategy, ComponentFactory, RendererType2, SchemaMetadata, Type, ViewEncapsulation, ɵLifecycleHooks } from '@angular/core';
+import { ChangeDetectionStrategy, ComponentFactory, RendererType2, SchemaMetadata, Type, ViewEncapsulation } from '@angular/core';
 import { StaticSymbol } from './aot/static_symbol';
+import { LifecycleHooks } from './lifecycle_reflector';
 export declare class CompileAnimationEntryMetadata {
     name: string | null;
     definitions: CompileAnimationStateMetadata[] | null;
@@ -116,7 +117,7 @@ export interface CompileTokenMetadata {
  */
 export interface CompileTypeMetadata extends CompileIdentifierMetadata {
     diDeps: CompileDiDependencyMetadata[];
-    lifecycleHooks: ɵLifecycleHooks[];
+    lifecycleHooks: LifecycleHooks[];
     reference: any;
 }
 export interface CompileQueryMetadata {

@@ -80,7 +80,9 @@ export declare class Location {
      */
     static joinWithSlash(start: string, end: string): string;
     /**
-     * If url has a trailing slash, remove it, otherwise return url as is.
+     * If url has a trailing slash, remove it, otherwise return url as is. This
+     * method looks for the first occurence of either #, ?, or the end of the
+     * line as `/` characters after any of these should not be replaced.
      */
     static stripTrailingSlash(url: string): string;
 }

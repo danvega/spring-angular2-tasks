@@ -7,6 +7,7 @@
  */
 import { InjectionToken, SchemaMetadata, ɵConsole as Console } from '@angular/core';
 import { CompileDirectiveMetadata, CompileDirectiveSummary, CompilePipeSummary, CompileTypeMetadata } from '../compile_metadata';
+import { CompileReflector } from '../compile_reflector';
 import { CompilerConfig } from '../config';
 import { Parser } from '../expression_parser/parser';
 import { I18NHtmlParser } from '../i18n/i18n_html_parser';
@@ -35,12 +36,13 @@ export declare class TemplateParseResult {
 }
 export declare class TemplateParser {
     private _config;
+    private _reflector;
     private _exprParser;
     private _schemaRegistry;
     private _htmlParser;
     private _console;
     transforms: TemplateAstVisitor[];
-    constructor(_config: CompilerConfig, _exprParser: Parser, _schemaRegistry: ElementSchemaRegistry, _htmlParser: I18NHtmlParser, _console: Console, transforms: TemplateAstVisitor[]);
+    constructor(_config: CompilerConfig, _reflector: CompileReflector, _exprParser: Parser, _schemaRegistry: ElementSchemaRegistry, _htmlParser: I18NHtmlParser, _console: Console, transforms: TemplateAstVisitor[]);
     parse(component: CompileDirectiveMetadata, template: string, directives: CompileDirectiveSummary[], pipes: CompilePipeSummary[], schemas: SchemaMetadata[], templateUrl: string): {
         template: TemplateAst[];
         pipes: CompilePipeSummary[];

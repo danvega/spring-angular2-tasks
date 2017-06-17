@@ -5,10 +5,11 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import { Directive, Type, ɵReflectorReader } from '@angular/core';
+import { Directive, Type } from '@angular/core';
+import { CompileReflector } from './compile_reflector';
 export declare class DirectiveResolver {
     private _reflector;
-    constructor(_reflector?: ɵReflectorReader);
+    constructor(_reflector: CompileReflector);
     isDirective(type: Type<any>): boolean;
     /**
      * Return {@link Directive} for a given `Type`.

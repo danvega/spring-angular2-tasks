@@ -43,7 +43,7 @@ export declare class ResponseOptions {
      */
     headers: Headers | null;
     url: string | null;
-    constructor({body, status, headers, statusText, type, url}?: ResponseOptionsArgs);
+    constructor(opts?: ResponseOptionsArgs);
     /**
      * Creates a copy of the `ResponseOptions` instance, using the optional input as values to
      * override

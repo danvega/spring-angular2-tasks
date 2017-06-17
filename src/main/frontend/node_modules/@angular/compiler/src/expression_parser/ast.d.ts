@@ -138,6 +138,11 @@ export declare class PrefixNot extends AST {
     constructor(span: ParseSpan, expression: AST);
     visit(visitor: AstVisitor, context?: any): any;
 }
+export declare class NonNullAssert extends AST {
+    expression: AST;
+    constructor(span: ParseSpan, expression: AST);
+    visit(visitor: AstVisitor, context?: any): any;
+}
 export declare class MethodCall extends AST {
     receiver: AST;
     name: string;
@@ -190,6 +195,30 @@ export interface AstVisitor {
     visitMethodCall(ast: MethodCall, context: any): any;
     visitPipe(ast: BindingPipe, context: any): any;
     visitPrefixNot(ast: PrefixNot, context: any): any;
+    visitNonNullAssert(ast: NonNullAssert, context: any): any;
+    visitPropertyRead(ast: PropertyRead, context: any): any;
+    visitPropertyWrite(ast: PropertyWrite, context: any): any;
+    visitQuote(ast: Quote, context: any): any;
+    visitSafeMethodCall(ast: SafeMethodCall, context: any): any;
+    visitSafePropertyRead(ast: SafePropertyRead, context: any): any;
+    visit?(ast: AST, context?: any): any;
+}
+export declare class NullAstVisitor implements AstVisitor {
+    visitBinary(ast: Binary, context: any): any;
+    visitChain(ast: Chain, context: any): any;
+    visitConditional(ast: Conditional, context: any): any;
+    visitFunctionCall(ast: FunctionCall, context: any): any;
+    visitImplicitReceiver(ast: ImplicitReceiver, context: any): any;
+    visitInterpolation(ast: Interpolation, context: any): any;
+    visitKeyedRead(ast: KeyedRead, context: any): any;
+    visitKeyedWrite(ast: KeyedWrite, context: any): any;
+    visitLiteralArray(ast: LiteralArray, context: any): any;
+    visitLiteralMap(ast: LiteralMap, context: any): any;
+    visitLiteralPrimitive(ast: LiteralPrimitive, context: any): any;
+    visitMethodCall(ast: MethodCall, context: any): any;
+    visitPipe(ast: BindingPipe, context: any): any;
+    visitPrefixNot(ast: PrefixNot, context: any): any;
+    visitNonNullAssert(ast: NonNullAssert, context: any): any;
     visitPropertyRead(ast: PropertyRead, context: any): any;
     visitPropertyWrite(ast: PropertyWrite, context: any): any;
     visitQuote(ast: Quote, context: any): any;
@@ -211,6 +240,7 @@ export declare class RecursiveAstVisitor implements AstVisitor {
     visitLiteralPrimitive(ast: LiteralPrimitive, context: any): any;
     visitMethodCall(ast: MethodCall, context: any): any;
     visitPrefixNot(ast: PrefixNot, context: any): any;
+    visitNonNullAssert(ast: NonNullAssert, context: any): any;
     visitPropertyRead(ast: PropertyRead, context: any): any;
     visitPropertyWrite(ast: PropertyWrite, context: any): any;
     visitSafePropertyRead(ast: SafePropertyRead, context: any): any;
@@ -232,6 +262,7 @@ export declare class AstTransformer implements AstVisitor {
     visitLiteralMap(ast: LiteralMap, context: any): AST;
     visitBinary(ast: Binary, context: any): AST;
     visitPrefixNot(ast: PrefixNot, context: any): AST;
+    visitNonNullAssert(ast: NonNullAssert, context: any): AST;
     visitConditional(ast: Conditional, context: any): AST;
     visitPipe(ast: BindingPipe, context: any): AST;
     visitKeyedRead(ast: KeyedRead, context: any): AST;
@@ -240,3 +271,4 @@ export declare class AstTransformer implements AstVisitor {
     visitChain(ast: Chain, context: any): AST;
     visitQuote(ast: Quote, context: any): AST;
 }
+export declare function visitAstChildren(ast: AST, visitor: AstVisitor, context?: any): void;
